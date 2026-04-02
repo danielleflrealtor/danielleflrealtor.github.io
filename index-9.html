@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Danielle Campbell · Sarasota & Bradenton Realtor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --charcoal: #2b2b2b;
+  --blue: #5b7a9d;
+  --blue-light: #7a9ab8;
+  --blue-pale: #dce6f0;
+  --cream: #f5f7fa;
+  --warm-white: #f9fafc;
+  --sand: #e2e8f0;
+  --sand-dark: #c8d4e0;
+  --text: #2b2b2b;
+  --muted: #6b6560;
+  --display: 'Cormorant Garamond', Georgia, serif;
+  --body: 'DM Sans', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--body); background: var(--cream); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 2.5rem; background: rgba(245,247,250,0.96); backdrop-filter: blur(14px); border-bottom: 1px solid var(--sand); }
+.nav-logo { font-family: var(--display); font-size: 1.4rem; font-weight: 600; color: var(--charcoal); text-decoration: none; letter-spacing: 0.02em; }
+.nav-logo em { color: var(--blue); font-style: italic; }
+.nav-links { display: flex; align-items: center; gap: 2rem; }
+.nav-links a { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--blue); }
+.nav-cta { background: var(--blue); color: #fff; padding: 0.55rem 1.4rem; border-radius: 2px; text-decoration: none; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; transition: background 0.2s; }
+.nav-cta:hover { background: var(--charcoal); }
+.hero { min-height: 100vh; display: flex; align-items: center; padding: 8rem 2.5rem 5rem; background: #1a1a1a; position: relative; overflow: hidden; }
+.hero-inner { max-width: 1120px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 4rem; align-items: center; position: relative; z-index: 2; }
+.hero-eyebrow { font-size: 0.74rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.8); margin-bottom: 1.1rem; }
+.hero-name { font-family: var(--display); font-size: clamp(3.8rem, 5.5vw, 5.6rem); font-weight: 300; line-height: 0.98; color: #fff; margin-bottom: 1.2rem; }
+.hero-name em { font-style: italic; color: var(--blue-light); display: block; }
+.hero-sub { font-size: 0.88rem; color: rgba(255,255,255,0.72); margin-bottom: 1.8rem; border-left: 2px solid rgba(255,255,255,0.4); padding-left: 1rem; line-height: 1.65; letter-spacing: 0.04em; }
+.hero-bio { font-size: 0.97rem; color: rgba(255,255,255,0.7); max-width: 460px; margin-bottom: 2.5rem; line-height: 1.82; }
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-primary { background: var(--blue); color: #fff; padding: 0.9rem 2.1rem; border-radius: 2px; text-decoration: none; font-size: 0.79rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; transition: background 0.2s; display: inline-block; border: none; cursor: pointer; font-family: var(--body); }
+.btn-primary:hover { background: var(--charcoal); }
+.btn-outline { background: transparent; color: #fff; padding: 0.9rem 2.1rem; border-radius: 2px; text-decoration: none; font-size: 0.79rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; border: 1.5px solid rgba(255,255,255,0.6); transition: all 0.2s; display: inline-block; }
+.btn-outline:hover { background: #fff; color: var(--charcoal); }
+.photo-card { width: 100%; max-width: 340px; border-radius: 4px; overflow: hidden; box-shadow: 24px 24px 70px rgba(0,0,0,0.4); position: relative; }
+.photo-card img { width: 100%; height: 460px; object-fit: cover; object-position: top center; display: block; }
+.photo-card-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 2.5rem 1.6rem 1.6rem; background: linear-gradient(to top, rgba(28,20,16,0.88) 0%, transparent 100%); }
+.photo-card-name { font-family: var(--display); font-size: 1.55rem; font-weight: 400; color: #fff; display: block; }
+.photo-card-title { font-size: 0.75rem; color: rgba(255,255,255,0.65); letter-spacing: 0.09em; margin-top: 0.25rem; }
+.photo-accent { position: absolute; top: -20px; right: -20px; width: 90px; height: 90px; border-radius: 50%; background: var(--blue); opacity: 0.25; pointer-events: none; }
+.photo-accent2 { position: absolute; bottom: 60px; left: -28px; width: 56px; height: 56px; border-radius: 50%; background: var(--blue); opacity: 0.18; pointer-events: none; }
+.section-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.8rem; }
+.section-title { font-family: var(--display); font-size: clamp(2rem, 3.5vw, 2.9rem); font-weight: 300; color: var(--charcoal); line-height: 1.15; }
+.section-title em { font-style: italic; color: var(--blue); }
+.about { background: var(--cream); padding: 7rem 2.5rem; }
+.about-bio { font-size: 1.02rem; color: var(--muted); line-height: 1.88; margin-bottom: 2.2rem; }
+.about-perks { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; margin-bottom: 2.5rem; }
+.perk { display: flex; align-items: flex-start; gap: 0.7rem; }
+.perk-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); margin-top: 0.58rem; flex-shrink: 0; }
+.perk p { font-size: 0.87rem; color: var(--charcoal); line-height: 1.5; }
+.why { background: var(--charcoal); padding: 7rem 2.5rem; }
+.why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 3.5rem; }
+.why-card { background: rgba(255,255,255,0.04); padding: 2.5rem 2rem; border: 1px solid rgba(255,255,255,0.07); transition: background 0.25s; }
+.why-card:hover { background: rgba(255,255,255,0.08); }
+.why-icon { font-size: 2rem; display: block; margin-bottom: 1.2rem; }
+.why-card h3 { font-family: var(--display); font-size: 1.35rem; font-weight: 400; color: #fff; margin-bottom: 0.6rem; }
+.why-card p { font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.75; }
+.help { background: var(--warm-white); padding: 7rem 2.5rem; }
+.help-card { background: var(--cream); border: 1.5px solid var(--sand); border-radius: 4px; padding: 2.4rem 2rem; text-decoration: none; color: inherit; display: flex; flex-direction: column; position: relative; overflow: hidden; transition: all 0.25s; }
+.help-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--blue); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
+.help-card:hover { transform: translateY(-4px); box-shadow: 0 16px 44px rgba(43,43,43,0.09); border-color: var(--sand-dark); }
+.help-card:hover::after { transform: scaleX(1); }
+.help-icon { font-size: 2rem; margin-bottom: 1.3rem; }
+.help-card h3 { font-family: var(--display); font-size: 1.3rem; font-weight: 600; color: var(--charcoal); margin-bottom: 0.6rem; }
+.help-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.75; flex: 1; }
+.help-arrow { margin-top: 1.5rem; font-size: 0.74rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); }
+.listings { background: var(--cream); padding: 7rem 2.5rem; }
+.listings-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3.5rem; }
+.listing-card { background: var(--warm-white); border: 1.5px solid var(--sand); border-radius: 4px; overflow: hidden; transition: all 0.25s; display: flex; flex-direction: column; }
+.listing-card:hover { transform: translateY(-5px); box-shadow: 0 18px 50px rgba(43,43,43,0.11); }
+.listing-card.featured { grid-column: span 3; display: grid; grid-template-columns: 1.5fr 1fr; }
+.listing-img-wrap { position: relative; overflow: hidden; height: 215px; background: linear-gradient(135deg, var(--sand) 0%, var(--blue-pale) 100%); }
+.listing-card.featured .listing-img-wrap { height: 100%; min-height: 300px; }
+.listing-img-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 0.5rem; }
+.listing-img-placeholder span { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); opacity: 0.6; }
+.listing-badge { position: absolute; top: 0.9rem; left: 0.9rem; background: var(--blue); color: #fff; font-size: 0.64rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.25rem 0.7rem; border-radius: 2px; }
+.listing-badge.feat { background: var(--charcoal); }
+.listing-mls { position: absolute; top: 0.9rem; right: 0.9rem; background: rgba(43,43,43,0.72); color: rgba(255,255,255,0.82); font-size: 0.62rem; letter-spacing: 0.06em; padding: 0.25rem 0.6rem; border-radius: 2px; }
+.listing-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+.listing-card.featured .listing-body { padding: 2.4rem; justify-content: center; }
+.listing-type { font-size: 0.67rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.4rem; }
+.listing-address { font-family: var(--display); font-size: 1.15rem; font-weight: 600; color: var(--charcoal); line-height: 1.2; margin-bottom: 0.2rem; }
+.listing-card.featured .listing-address { font-size: 1.65rem; }
+.listing-city { font-size: 0.8rem; color: var(--muted); margin-bottom: 1rem; }
+.listing-price { font-family: var(--display); font-size: 1.55rem; font-weight: 400; color: var(--blue); margin-bottom: 0.9rem; }
+.listing-card.featured .listing-price { font-size: 2.2rem; }
+.listing-details { display: flex; gap: 1.2rem; font-size: 0.8rem; color: var(--muted); flex-wrap: wrap; }
+.listing-detail { display: flex; align-items: center; gap: 0.35rem; }
+.listing-link { display: inline-block; margin-top: 1.5rem; font-size: 0.73rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); text-decoration: none; }
+.listing-link:hover { color: var(--charcoal); }
+.listings-cta-row { text-align: center; margin-top: 3rem; }
+.areas { background: var(--charcoal); padding: 7rem 2.5rem; }
+.areas-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 3.5rem; }
+.area-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); padding: 2.5rem 2rem; transition: background 0.25s; }
+.area-card:hover { background: rgba(255,255,255,0.08); }
+.area-icon { font-size: 2rem; display: block; margin-bottom: 1.2rem; }
+.area-card h3 { font-family: var(--display); font-size: 1.4rem; font-weight: 400; color: #fff; margin-bottom: 0.5rem; }
+.area-card p { font-size: 0.82rem; color: rgba(255,255,255,0.45); line-height: 1.7; }
+.resources { background: var(--warm-white); padding: 7rem 2.5rem; }
+.resources-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 3.5rem; }
+.resource-card { background: var(--cream); border: 1.5px solid var(--sand); border-radius: 4px; padding: 2.2rem 2rem; cursor: pointer; transition: all 0.25s; display: flex; flex-direction: column; }
+.resource-card:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(43,43,43,0.08); border-color: var(--sand-dark); }
+.resource-type { font-size: 0.67rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.5rem; }
+.resource-card h3 { font-family: var(--display); font-size: 1.3rem; font-weight: 600; color: var(--charcoal); margin-bottom: 0.5rem; }
+.resource-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.72; flex: 1; }
+.resource-link { margin-top: 1.3rem; font-size: 0.73rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); }
+.cta-banner { background: var(--blue); padding: 6.5rem 2.5rem; text-align: center; position: relative; overflow: hidden; }
+.cta-banner::before { content: ''; position: absolute; top: -60px; left: -60px; width: 280px; height: 280px; border-radius: 50%; background: rgba(255,255,255,0.06); }
+.cta-banner::after { content: ''; position: absolute; bottom: -80px; right: -40px; width: 320px; height: 320px; border-radius: 50%; background: rgba(255,255,255,0.05); }
+.cta-inner { position: relative; z-index: 1; }
+.cta-banner h2 { font-family: var(--display); font-size: clamp(2.2rem, 4vw, 3.3rem); font-weight: 300; color: #fff; margin-bottom: 1rem; }
+.cta-banner h2 em { font-style: italic; }
+.cta-banner p { font-size: 1rem; color: rgba(255,255,255,0.82); margin-bottom: 2.5rem; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.72; }
+.btn-white { background: #fff; color: var(--blue); padding: 1rem 2.6rem; border-radius: 2px; text-decoration: none; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; transition: all 0.2s; display: inline-block; }
+.btn-white:hover { background: var(--charcoal); color: #fff; }
+footer { background: var(--charcoal); padding: 3rem 2.5rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.07); }
+.footer-logo { font-family: var(--display); font-size: 1.35rem; font-weight: 600; color: #fff; margin-bottom: 0.4rem; }
+.footer-logo em { color: var(--blue-light); font-style: italic; }
+.footer-sub { font-size: 0.78rem; color: rgba(255,255,255,0.38); margin-bottom: 0.6rem; letter-spacing: 0.06em; }
+.footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.22); }
+.modal-overlay { display: none; position: fixed; inset: 0; z-index: 500; background: rgba(25,18,14,0.65); backdrop-filter: blur(6px); align-items: center; justify-content: center; padding: 1.5rem; }
+.modal-overlay.open { display: flex; }
+.modal { background: var(--warm-white); border-radius: 4px; max-width: 540px; width: 100%; padding: 2.8rem; position: relative; max-height: 88vh; overflow-y: auto; }
+.modal-close { position: absolute; top: 1.2rem; right: 1.4rem; background: none; border: none; font-size: 1.3rem; cursor: pointer; color: var(--muted); transition: color 0.2s; }
+.modal-close:hover { color: var(--charcoal); }
+.modal-title { font-family: var(--display); font-size: 1.75rem; font-weight: 600; color: var(--charcoal); margin-bottom: 0.3rem; }
+.modal-sub { font-size: 0.76rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2rem; }
+.form-group { margin-bottom: 1.15rem; }
+.form-group label { display: block; font-size: 0.79rem; font-weight: 500; color: var(--charcoal); margin-bottom: 0.4rem; }
+.form-group input { width: 100%; padding: 0.78rem 1rem; border: 1.5px solid var(--sand); border-radius: 2px; background: var(--cream); font-family: var(--body); font-size: 0.9rem; color: var(--charcoal); outline: none; transition: border-color 0.2s; }
+.form-group input:focus { border-color: var(--blue); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.calc-result { background: var(--blue-pale); border-radius: 2px; padding: 1.3rem 1.5rem; margin-top: 1.2rem; display: none; border-left: 3px solid var(--blue); }
+.calc-result.visible { display: block; }
+.calc-result p { font-size: 0.9rem; color: var(--charcoal); line-height: 1.7; }
+.calc-result strong { color: var(--blue); }
+.checklist-items { list-style: none; margin-top: 0.5rem; }
+.checklist-items li { display: flex; align-items: center; gap: 0.9rem; padding: 0.75rem 0; border-bottom: 1px solid var(--sand); cursor: pointer; font-size: 0.9rem; color: var(--charcoal); transition: color 0.15s; user-select: none; }
+.checklist-items li.checked { color: var(--muted); text-decoration: line-through; }
+.check-box { width: 18px; height: 18px; border: 1.5px solid var(--sand-dark); border-radius: 2px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
+.checklist-items li.checked .check-box { background: var(--blue); border-color: var(--blue); }
+.check-mark { display: none; color: #fff; font-size: 0.7rem; font-weight: 700; }
+.checklist-items li.checked .check-mark { display: block; }
+.guide-prose h4 { font-family: var(--display); font-size: 1.1rem; color: var(--charcoal); margin: 1.3rem 0 0.4rem; }
+.guide-prose h4:first-child { margin-top: 0; }
+.guide-prose p { font-size: 0.9rem; color: var(--muted); line-height: 1.78; }
+.quiz-progress { font-size: 0.74rem; color: var(--muted); margin-bottom: 1.2rem; }
+.quiz-question { font-family: var(--display); font-size: 1.25rem; color: var(--charcoal); margin-bottom: 1rem; line-height: 1.4; }
+.quiz-options { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+.quiz-option { background: var(--cream); border: 1.5px solid var(--sand); border-radius: 2px; padding: 0.9rem 1rem; cursor: pointer; font-size: 0.85rem; color: var(--charcoal); transition: all 0.2s; text-align: center; font-family: var(--body); }
+.quiz-option:hover { border-color: var(--blue); background: var(--blue-pale); color: var(--blue); }
+.quiz-result { background: var(--blue-pale); border-radius: 2px; padding: 1.5rem; border-left: 3px solid var(--blue); margin-top: 1rem; }
+.quiz-result h4 { font-family: var(--display); font-size: 1.3rem; color: var(--charcoal); margin-bottom: 0.5rem; }
+.quiz-result p { font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
+@media (max-width: 960px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .hero { padding: 7rem 1.5rem 4rem; }
+  .photo-card { max-width: 280px; }
+  .why-grid, .areas-grid { grid-template-columns: 1fr 1fr; }
+  .listings-grid { grid-template-columns: 1fr 1fr; }
+  .listing-card.featured { grid-column: span 2; grid-template-columns: 1fr 1fr; }
+  .resources-grid { grid-template-columns: 1fr; }
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  .about-perks { grid-template-columns: 1fr; }
+  .about, .why, .help, .listings, .areas, .resources, .cta-banner { padding: 4rem 1.5rem; }
+}
+@media (max-width: 600px) {
+  .hero-name { font-size: 3.2rem; }
+  .listings-grid { grid-template-columns: 1fr; }
+  .listing-card.featured { grid-column: span 1; grid-template-columns: 1fr; }
+  .why-grid, .areas-grid { grid-template-columns: 1fr; }
+  .quiz-options, .form-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Danielle <em>Campbell</em></a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#listings">Listings</a>
+    <a href="#resources">Resources</a>
+    <a href="/cdn-cgi/l/email-protection#3d595c5354585151581b1e0b0906595c5354585151585b514f585c5149524f1b1e090b065e5250" style="display:flex;align-items:center;gap:0.4rem;text-transform:none;letter-spacing:0;">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+      danielle&#64;danielleflrealtor&#46;com
+    </a>
+  </div>
+  <a href="https://calendly.com/danielle-danielleflrealtor" target="_blank" class="nav-cta">Book a Call</a>
+</nav>
+
+<section class="hero">
+  <div style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;overflow:hidden;pointer-events:none;">
+    <video autoplay muted loop playsinline style="position:absolute;top:50%;left:50%;min-width:100%;min-height:100%;width:auto;height:auto;transform:translate(-50%,-50%);opacity:0.55;pointer-events:none;">
+      <source src="bg.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(15,15,15,0.78) 0%,rgba(15,15,15,0.4) 60%,rgba(15,15,15,0.25) 100%);z-index:1;"></div>
+  <div class="hero-inner">
+    <div>
+      <p class="hero-eyebrow">Sarasota &amp; Bradenton Realtor</p>
+      <h1 class="hero-name">Danielle<em>Campbell</em></h1>
+      <p class="hero-sub">Licensed Realtor · Sarasota Native · Your Local Expert</p>
+      <p class="hero-bio">Sarasota born and raised, I've proudly served my hometown since 2022 — helping families buy, sell, and find their perfect place on the Suncoast. Real estate isn't just my career, it's something I'm truly passionate about. 🌴</p>
+      <div class="hero-btns">
+        <a href="https://calendly.com/danielle-danielleflrealtor" target="_blank" class="btn-primary">Book a Free Consult</a>
+        <a href="#resources" class="btn-outline">Free Resources</a>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:center;align-items:flex-start;">
+      <div style="position:relative;display:inline-block;">
+        <div class="photo-accent"></div>
+        <div class="photo-accent2"></div>
+        <div class="photo-card">
+          <img src="danielle.jpg" alt="Danielle Campbell, Sarasota Realtor" />
+          <div class="photo-card-overlay">
+            <span class="photo-card-name">Danielle Campbell</span>
+            <span class="photo-card-title">Sarasota &amp; Bradenton · Licensed Realtor</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div style="max-width:780px;margin:0 auto;">
+    <p class="section-label">About Me</p>
+    <h2 class="section-title" style="margin-bottom:1.5rem;">A Local You Can <em>Trust</em></h2>
+    <p class="about-bio">Sarasota born and raised, I've proudly served my hometown as a licensed Realtor since 2022. In that time, I've helped many families navigate one of life's biggest milestones with confidence and clarity. I work alongside my mom, a broker/owner with over 25 years of experience. Real estate isn't just my career — it's something I'm truly passionate about. You can expect clear communication, timely responses, local insight as a Sarasota native, step-by-step guidance, and service that always goes above and beyond.</p>
+    <div class="about-perks">
+      <div class="perk"><div class="perk-dot"></div><p>Clear communication every step</p></div>
+      <div class="perk"><div class="perk-dot"></div><p>Timely responses — always</p></div>
+      <div class="perk"><div class="perk-dot"></div><p>True Sarasota native insight</p></div>
+      <div class="perk"><div class="perk-dot"></div><p>Step-by-step guidance</p></div>
+      <div class="perk"><div class="perk-dot"></div><p>Backed by 25+ yrs family expertise</p></div>
+      <div class="perk"><div class="perk-dot"></div><p>Service that goes above &amp; beyond</p></div>
+    </div>
+    <a href="https://calendly.com/danielle-danielleflrealtor" target="_blank" class="btn-primary">Let's Chat →</a>
+  </div>
+</section>
+
+<section class="why">
+  <div style="max-width:1120px;margin:0 auto;">
+    <p class="section-label" style="color:var(--blue-light);">Why Work With Me</p>
+    <h2 class="section-title" style="color:#fff;margin-bottom:0;">What Makes the <em style="color:var(--blue-light);">Difference</em></h2>
+    <div class="why-grid">
+      <div class="why-card"><span class="why-icon">🏠</span><h3>Buying · Selling · Relocating</h3><p>I cover the entire Gulf Coast corridor — from Tampa all the way down to North Port, including Sarasota, Bradenton, and everywhere in between.</p></div>
+      <div class="why-card"><span class="why-icon">🌴</span><h3>Born &amp; Raised Here</h3><p>I'm not just an agent who moved here — I grew up on the Suncoast. That local knowledge is something you can't replicate, and I bring it to every single deal.</p></div>
+      <div class="why-card"><span class="why-icon">🤝</span><h3>Family-Backed Expertise</h3><p>I work alongside my mom — a broker/owner with 25+ years of experience — so you get dedicated personal service backed by deep, seasoned expertise.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="help">
+  <div style="max-width:1120px;margin:0 auto;">
+    <p class="section-label">How I Can Help You</p>
+    <h2 class="section-title" style="margin-bottom:0.5rem;">What Do You <em>Need?</em></h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:3.5rem;">
+      <a href="https://calendly.com/danielle-danielleflrealtor" target="_blank" class="help-card">
+        <div class="help-icon">🏡</div>
+        <h3>I Want to Buy</h3>
+        <p>Tell me what you're dreaming of and I'll find your perfect match in Sarasota, Bradenton, or anywhere along the Gulf Coast. This is genuinely my favorite part of the job!</p>
+        <span class="help-arrow">Let's find it →</span>
+      </a>
+      <a href="https://calendly.com/danielle-danielleflrealtor" target="_blank" class="help-card">
+        <div class="help-icon">🔑</div>
+        <h3>I Want to Sell</h3>
+        <p>Thinking about selling? Let's chat about what your property is worth. I'll give you the real numbers with no fluff and a clear plan to get you top dollar.</p>
+        <span class="help-arrow">Get started →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="listings" id="listings">
+  <div style="max-width:1120px;margin:0 auto;">
+    <p class="section-label">Active Listings</p>
+    <h2 class="section-title">Current <em>Properties</em></h2>
+    <div style="position:relative;margin-top:3.5rem;">
+      <!-- Arrows -->
+      <button onclick="slideCarousel(-1)" style="position:absolute;left:-20px;top:50%;transform:translateY(-50%);z-index:10;background:#fff;border:1.5px solid var(--sand);border-radius:50%;width:48px;height:48px;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(43,43,43,0.12);transition:all 0.2s;" onmouseover="this.style.background='var(--blue)';this.style.color='#fff'" onmouseout="this.style.background='#fff';this.style.color='inherit'">&#8249;</button>
+      <button onclick="slideCarousel(1)" style="position:absolute;right:-20px;top:50%;transform:translateY(-50%);z-index:10;background:#fff;border:1.5px solid var(--sand);border-radius:50%;width:48px;height:48px;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(43,43,43,0.12);transition:all 0.2s;" onmouseover="this.style.background='var(--blue)';this.style.color='#fff'" onmouseout="this.style.background='#fff';this.style.color='inherit'">&#8250;</button>
+      <!-- Carousel track -->
+      <div style="overflow:hidden;border-radius:4px;">
+        <div id="carousel-track" style="display:flex;transition:transform 0.4s ease;will-change:transform;">
+
+          <!-- Card 1: $1,999,900 -->
+          <div style="min-width:100%;padding:0 4px;">
+            <div style="background:var(--warm-white);border:1.5px solid var(--sand);border-radius:4px;overflow:hidden;display:grid;grid-template-columns:1.4fr 1fr;">
+              <div style="position:relative;min-height:320px;background:linear-gradient(135deg,var(--sand),var(--blue-pale));display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#5b7a9d" stroke-width="1.2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                <span style="font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);">Add photo to GitHub</span>
+                <div style="position:absolute;top:0.9rem;left:0.9rem;background:var(--charcoal);color:#fff;font-size:0.64rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:0.25rem 0.7rem;border-radius:2px;">Featured</div>
+                <div style="position:absolute;top:0.9rem;right:0.9rem;background:rgba(43,43,43,0.72);color:rgba(255,255,255,0.82);font-size:0.62rem;padding:0.25rem 0.6rem;border-radius:2px;">MLS# A4686579</div>
+              </div>
+              <div style="padding:2.5rem;">
+                <p style="font-size:0.67rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--blue);margin-bottom:0.4rem;">Single Family Residence</p>
+                <p style="font-family:var(--display);font-size:1.6rem;font-weight:600;color:var(--charcoal);line-height:1.2;margin-bottom:0.2rem;">10218 46th Ave W</p>
+                <p style="font-size:0.8rem;color:var(--muted);margin-bottom:1rem;">Bradenton, FL</p>
+                <p style="font-family:var(--display);font-size:2rem;font-weight:400;color:var(--blue);margin-bottom:0.9rem;">$1,999,900</p>
+                <div style="display:flex;gap:1.2rem;font-size:0.8rem;color:var(--muted);flex-wrap:wrap;margin-bottom:1.5rem;">
+                  <span style="display:flex;align-items:center;gap:0.35rem;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg> 4 Beds</span>
+                  <span style="display:flex;align-items:center;gap:0.35rem;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M4 12a2 2 0 01-2-2V6h16v4a2 2 0 01-2 2M4 12v6a2 2 0 002 2h12a2 2 0 002-2v-6"/></svg> 2 Baths</span>
+                  <span style="color:var(--blue);font-weight:500;">● Active</span>
+                </div>
+                <a href="https://www.homes.com/property/10218-46th-avenue-west-bradenton-fl/811j90c0sdhy4/" target="_blank" style="display:inline-block;font-size:0.73rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue);text-decoration:none;">View on Homes.com →</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: $925,000 -->
+          <div style="min-width:100%;padding:0 4px;">
+            <div style="background:var(--warm-white);border:1.5px solid var(--sand);border-radius:4px;overflow:hidden;display:grid;grid-template-columns:1.4fr 1fr;">
+              <div style="position:relative;min-height:320px;background:linear-gradient(135deg,var(--sand),var(--blue-pale));display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#5b7a9d" stroke-width="1.2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                <span style="font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);">Add photo to GitHub</span>
+                <div style="position:absolute;top:0.9rem;left:0.9rem;background:var(--blue);color:#fff;font-size:0.64rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:0.25rem 0.7rem;border-radius:2px;">Active</div>
+                <div style="position:absolute;top:0.9rem;right:0.9rem;background:rgba(43,43,43,0.72);color:rgba(255,255,255,0.82);font-size:0.62rem;padding:0.25rem 0.6rem;border-radius:2px;">MLS# A4680514</div>
+              </div>
+              <div style="padding:2.5rem;">
+                <p style="font-size:0.67rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--blue);margin-bottom:0.4rem;">Single Family Residence</p>
+                <p style="font-family:var(--display);font-size:1.6rem;font-weight:600;color:var(--charcoal);line-height:1.2;margin-bottom:0.2rem;">651 Jungle Queen Way</p>
+                <p style="font-size:0.8rem;color:var(--muted);margin-bottom:1rem;">Longboat Key, FL</p>
+                <p style="font-family:var(--display);font-size:2rem;font-weight:400;color:var(--blue);margin-bottom:0.9rem;">$925,000</p>
+                <div style="display:flex;gap:1.2rem;font-size:0.8rem;color:var(--muted);flex-wrap:wrap;margin-bottom:1.5rem;">
+                  <span style="display:flex;align-items:center;gap:0.35rem;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg> 4 Beds</span>
+                  <span style="display:flex;align-items:center;gap:0.35rem;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M4 12a2 2 0 01-2-2V6h16v4a2 2 0 01-2 2M4 12v6a2 2 0 002 2h12a2 2 0 002-2v-6"/></svg> 3 Baths</span>
+                  <span style="color:var(--blue);font-weight:500;">● Active</span>
+                </div>
+                <a href="https://www.homes.com/property/651-jungle-queen-way-longboat-key-fl/tl0pdse2fkx53/" target="_blank" style="display:inline-block;font-size:0.73rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue);text-decoration:none;">View on Homes.com →</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: $500,000 -->
+          <div style="min-width:100%;padding:0 4px;">
+            <div style="background:var(--warm-white);border:1.5px solid var(--sand);border-radius:4px;overflow:hidden;display:grid;grid-template-columns:1.4fr 1fr;">
+              <div style="position:relative;min-height:320px;background:linear-gradient(135deg,var(--sand),var(--blue-pale));display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#5b7a9d" stroke-width="1.2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                <span style="font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);">Add photo to GitHub</span>
+                <div style="position:absolute;top:0.9rem;left:0.9rem;background:var(--blue);color:#fff;font-size:0.64rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:0.25rem 0.7rem;border-radius:2px;">Active</div>
+                <div style="position:absolute;top:0.9rem;right:0.9rem;background:rgba(43,43,43,0.72);color:rgba(255,255,255,0.82);font-size:0.62rem;padding:0.25rem 0.6rem;border-radius:2px;">MLS# A4630144</div>
+              </div>
+              <div style="padding:2.5rem;">
+                <p style="font-size:0.67rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--blue);margin-bottom:0.4rem;">Condominium</p>
+                <p style="font-family:var(--display);font-size:1.6rem;font-weight:600;color:var(--charcoal);line-height:1.2;margin-bottom:0.2rem;">7100 Sunshine Skyway Ln S #706</p>
+                <p style="font-size:0.8rem;color:var(--muted);margin-bottom:1rem;">St. Petersburg, FL</p>
+                <p style="font-family:var(--display);font-size:2rem;font-weight:400;color:var(--blue);margin-bottom:0.9rem;">$500,000</p>
+                <div style="display:flex;gap:1.2rem;font-size:0.8rem;color:var(--muted);flex-wrap:wrap;margin-bottom:1.5rem;">
+                  <span style="display:flex;align-items:center;gap:0.35rem;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg> 3 Beds</span>
+                  <span style="display:flex;align-items:center;gap:0.35rem;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M4 12a2 2 0 01-2-2V6h16v4a2 2 0 01-2 2M4 12v6a2 2 0 002 2h12a2 2 0 002-2v-6"/></svg> 2 Baths</span>
+                  <span style="color:var(--blue);font-weight:500;">● Active</span>
+                </div>
+                <a href="https://www.homes.com/property/7100-sunshine-skyway-lane-s-706-saint-petersburg-fl-unit-706/l4w2m12c32dpt/" target="_blank" style="display:inline-block;font-size:0.73rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue);text-decoration:none;">View on Homes.com →</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: $324,900 -->
+          <div style="min-width:100%;padding:0 4px;">
+            <div style="background:var(--warm-white);border:1.5px solid var(--sand);border-radius:4px;overflow:hidden;display:grid;grid-template-columns:1.4fr 1fr;">
+              <div style="position:relative;min-height:320px;background:linear-gradient(135deg,var(--sand),var(--blue-pale));display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#5b7a9d" stroke-width="1.2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                <span style="font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);">Add photo to GitHub</span>
+                <div style="position:absolute;top:0.9rem;left:0.9rem;background:var(--blue);color:#fff;font-size:0.64rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:0.25rem 0.7rem;border-radius:2px;">Active</div>
+                <div style="position:absolute;top:0.9rem;right:0.9rem;background:rgba(43,43,43,0.72);color:rgba(255,255,255,0.82);font-size:0.62rem;padding:0.25rem 0.6rem;border-radius:2px;">MLS# A4649627</div>
+              </div>
+              <div style="padding:2.5rem;">
+                <p style="font-size:0.67rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--blue);margin-bottom:0.4rem;">Villa</p>
+                <p style="font-family:var(--display);font-size:1.6rem;font-weight:600;color:var(--charcoal);line-height:1.2;margin-bottom:0.2rem;">7724 Palm Aire Ln</p>
+                <p style="font-size:0.8rem;color:var(--muted);margin-bottom:1rem;">Sarasota, FL</p>
+                <p style="font-family:var(--display);font-size:2rem;font-weight:400;color:var(--blue);margin-bottom:0.9rem;">$324,900</p>
+                <div style="display:flex;gap:1.2rem;font-size:0.8rem;color:var(--muted);flex-wrap:wrap;margin-bottom:1.5rem;">
+                  <span style="display:flex;align-items:center;gap:0.35rem;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg> 2 Beds</span>
+                  <span style="display:flex;align-items:center;gap:0.35rem;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M4 12a2 2 0 01-2-2V6h16v4a2 2 0 01-2 2M4 12v6a2 2 0 002 2h12a2 2 0 002-2v-6"/></svg> 2 Baths</span>
+                  <span style="color:var(--blue);font-weight:500;">● Active</span>
+                </div>
+                <a href="https://www.homes.com/property/7724-palm-aire-lane-sarasota-fl/cb5s7dtdqfq4n/" target="_blank" style="display:inline-block;font-size:0.73rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue);text-decoration:none;">View on Homes.com →</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5: $232,900 -->
+          <div style="min-width:100%;padding:0 4px;">
+            <div style="background:var(--warm-white);border:1.5px solid var(--sand);border-radius:4px;overflow:hidden;display:grid;grid-template-columns:1.4fr 1fr;">
+              <div style="position:relative;min-height:320px;background:linear-gradient(135deg,var(--sand),var(--blue-pale));display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#5b7a9d" stroke-width="1.2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                <span style="font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);">Add photo to GitHub</span>
+                <div style="position:absolute;top:0.9rem;left:0.9rem;background:var(--blue);color:#fff;font-size:0.64rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:0.25rem 0.7rem;border-radius:2px;">Active</div>
+                <div style="position:absolute;top:0.9rem;right:0.9rem;background:rgba(43,43,43,0.72);color:rgba(255,255,255,0.82);font-size:0.62rem;padding:0.25rem 0.6rem;border-radius:2px;">MLS# A4664009</div>
+              </div>
+              <div style="padding:2.5rem;">
+                <p style="font-size:0.67rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--blue);margin-bottom:0.4rem;">Condominium</p>
+                <p style="font-family:var(--display);font-size:1.6rem;font-weight:600;color:var(--charcoal);line-height:1.2;margin-bottom:0.2rem;">432 Sunset Lake Blvd #102</p>
+                <p style="font-size:0.8rem;color:var(--muted);margin-bottom:1rem;">Venice, FL</p>
+                <p style="font-family:var(--display);font-size:2rem;font-weight:400;color:var(--blue);margin-bottom:0.9rem;">$232,900</p>
+                <div style="display:flex;gap:1.2rem;font-size:0.8rem;color:var(--muted);flex-wrap:wrap;margin-bottom:1.5rem;">
+                  <span style="display:flex;align-items:center;gap:0.35rem;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg> 2 Beds</span>
+                  <span style="display:flex;align-items:center;gap:0.35rem;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M4 12a2 2 0 01-2-2V6h16v4a2 2 0 01-2 2M4 12v6a2 2 0 002 2h12a2 2 0 002-2v-6"/></svg> 2 Baths</span>
+                  <span style="color:var(--blue);font-weight:500;">● Active</span>
+                </div>
+                <a href="https://www.homes.com/property/432-sunset-lake-boulevard-102-venice-fl-unit-102/pfpl1zy6bn5b1/" target="_blank" style="display:inline-block;font-size:0.73rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue);text-decoration:none;">View on Homes.com →</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 6: $79,900 -->
+          <div style="min-width:100%;padding:0 4px;">
+            <div style="background:var(--warm-white);border:1.5px solid var(--sand);border-radius:4px;overflow:hidden;display:grid;grid-template-columns:1.4fr 1fr;">
+              <div style="position:relative;min-height:320px;background:linear-gradient(135deg,var(--sand),var(--blue-pale));display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#5b7a9d" stroke-width="1.2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                <span style="font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);">Add photo to GitHub</span>
+                <div style="position:absolute;top:0.9rem;left:0.9rem;background:var(--blue);color:#fff;font-size:0.64rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:0.25rem 0.7rem;border-radius:2px;">Active</div>
+                <div style="position:absolute;top:0.9rem;right:0.9rem;background:rgba(43,43,43,0.72);color:rgba(255,255,255,0.82);font-size:0.62rem;padding:0.25rem 0.6rem;border-radius:2px;">MLS# A4676157</div>
+              </div>
+              <div style="padding:2.5rem;">
+                <p style="font-size:0.67rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--blue);margin-bottom:0.4rem;">Residential</p>
+                <p style="font-family:var(--display);font-size:1.6rem;font-weight:600;color:var(--charcoal);line-height:1.2;margin-bottom:0.2rem;">1512 23rd Ave W</p>
+                <p style="font-size:0.8rem;color:var(--muted);margin-bottom:1rem;">Bradenton, FL</p>
+                <p style="font-family:var(--display);font-size:2rem;font-weight:400;color:var(--blue);margin-bottom:0.9rem;">$79,900</p>
+                <div style="display:flex;gap:1.2rem;font-size:0.8rem;color:var(--muted);flex-wrap:wrap;margin-bottom:1.5rem;">
+                  <span style="display:flex;align-items:center;gap:0.35rem;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg> 1 Bed</span>
+                  <span style="display:flex;align-items:center;gap:0.35rem;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M4 12a2 2 0 01-2-2V6h16v4a2 2 0 01-2 2M4 12v6a2 2 0 002 2h12a2 2 0 002-2v-6"/></svg> 2 Baths</span>
+                  <span style="color:var(--blue);font-weight:500;">● Active</span>
+                </div>
+                <a href="https://www.homes.com/property/1512-23rd-avenue-w-bradenton-fl/g9nhewjbb442z/" target="_blank" style="display:inline-block;font-size:0.73rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue);text-decoration:none;">View on Homes.com →</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- Dots -->
+      <div id="carousel-dots" style="display:flex;justify-content:center;gap:0.5rem;margin-top:1.5rem;">
+        <button onclick="goToSlide(0)" class="dot active-dot" style="width:8px;height:8px;border-radius:50%;border:none;cursor:pointer;background:var(--blue);transition:all 0.2s;padding:0;"></button>
+        <button onclick="goToSlide(1)" class="dot" style="width:8px;height:8px;border-radius:50%;border:none;cursor:pointer;background:var(--sand-dark);transition:all 0.2s;padding:0;"></button>
+        <button onclick="goToSlide(2)" class="dot" style="width:8px;height:8px;border-radius:50%;border:none;cursor:pointer;background:var(--sand-dark);transition:all 0.2s;padding:0;"></button>
+        <button onclick="goToSlide(3)" class="dot" style="width:8px;height:8px;border-radius:50%;border:none;cursor:pointer;background:var(--sand-dark);transition:all 0.2s;padding:0;"></button>
+        <button onclick="goToSlide(4)" class="dot" style="width:8px;height:8px;border-radius:50%;border:none;cursor:pointer;background:var(--sand-dark);transition:all 0.2s;padding:0;"></button>
+        <button onclick="goToSlide(5)" class="dot" style="width:8px;height:8px;border-radius:50%;border:none;cursor:pointer;background:var(--sand-dark);transition:all 0.2s;padding:0;"></button>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem;">
+      <a href="https://calendly.com/danielle-danielleflrealtor" target="_blank" class="btn-primary">Interested in a Property? Let's Talk →</a>
+    </div>
+  </div>
+</section>
+      <div class="listing-card featured">
+        <div class="listing-img-wrap">
+          <div class="listing-img-placeholder"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#5b7a9d" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>10218 46th Ave W · Bradenton</span></div>
+          <div class="listing-badge feat">Featured Listing</div><div class="listing-mls">MLS# A4686579</div>
+        </div>
+        <div class="listing-body">
+          <p class="listing-type">Single Family Residence</p><p class="listing-address">10218 46th Ave W</p><p class="listing-city">Bradenton, FL</p>
+          <p class="listing-price">$1,999,900</p>
+          <div class="listing-details">
+            <span class="listing-detail"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg> 4 Beds</span>
+            <span class="listing-detail"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M4 12a2 2 0 01-2-2V6h16v4a2 2 0 01-2 2M4 12v6a2 2 0 002 2h12a2 2 0 002-2v-6"/></svg> 2 Baths</span>
+            <span class="listing-detail" style="color:var(--blue);font-weight:500;">● Active</span>
+          </div>
+          <a href="https://www.homes.com/property/10218-46th-avenue-west-bradenton-fl/811j90c0sdhy4/" target="_blank" class="listing-link">View on Homes.com →</a>
+        </div>
+      </div>
+      <div class="listing-card">
+        <div class="listing-img-wrap"><div class="listing-img-placeholder"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#5b7a9d" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div><div class="listing-badge">Active</div><div class="listing-mls">MLS# A4680514</div></div>
+        <div class="listing-body"><p class="listing-type">Single Family Residence</p><p class="listing-address">651 Jungle Queen Way</p><p class="listing-city">Longboat Key, FL</p><p class="listing-price">$925,000</p>
+          <div class="listing-details"><span class="listing-detail"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg> 4 Beds</span><span class="listing-detail"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M4 12a2 2 0 01-2-2V6h16v4a2 2 0 01-2 2M4 12v6a2 2 0 002 2h12a2 2 0 002-2v-6"/></svg> 3 Baths</span><span class="listing-detail" style="color:var(--blue);font-weight:500;">● Active</span></div>
+          <a href="https://www.homes.com/property/651-jungle-queen-way-longboat-key-fl/tl0pdse2fkx53/" target="_blank" class="listing-link">View on Homes.com →</a>
+        </div>
+      </div>
+      <div class="listing-card">
+        <div class="listing-img-wrap"><div class="listing-img-placeholder"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#5b7a9d" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div><div class="listing-badge">Active</div><div class="listing-mls">MLS# A4630144</div></div>
+        <div class="listing-body"><p class="listing-type">Condominium</p><p class="listing-address">7100 Sunshine Skyway Ln S #706</p><p class="listing-city">St. Petersburg, FL</p><p class="listing-price">$500,000</p>
+          <div class="listing-details"><span class="listing-detail"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg> 3 Beds</span><span class="listing-detail"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M4 12a2 2 0 01-2-2V6h16v4a2 2 0 01-2 2M4 12v6a2 2 0 002 2h12a2 2 0 002-2v-6"/></svg> 2 Baths</span><span class="listing-detail" style="color:var(--blue);font-weight:500;">● Active</span></div>
+          <a href="https://www.homes.com/property/7100-sunshine-skyway-lane-s-706-saint-petersburg-fl-unit-706/l4w2m12c32dpt/" target="_blank" class="listing-link">View on Homes.com →</a>
+        </div>
+      </div>
+      <div class="listing-card">
+        <div class="listing-img-wrap"><div class="listing-img-placeholder"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#5b7a9d" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div><div class="listing-badge">Active</div><div class="listing-mls">MLS# A4649627</div></div>
+        <div class="listing-body"><p class="listing-type">Villa</p><p class="listing-address">7724 Palm Aire Ln</p><p class="listing-city">Sarasota, FL</p><p class="listing-price">$324,900</p>
+          <div class="listing-details"><span class="listing-detail"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg> 2 Beds</span><span class="listing-detail"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M4 12a2 2 0 01-2-2V6h16v4a2 2 0 01-2 2M4 12v6a2 2 0 002 2h12a2 2 0 002-2v-6"/></svg> 2 Baths</span><span class="listing-detail" style="color:var(--blue);font-weight:500;">● Active</span></div>
+          <a href="https://www.homes.com/property/7724-palm-aire-lane-sarasota-fl/cb5s7dtdqfq4n/" target="_blank" class="listing-link">View on Homes.com →</a>
+        </div>
+      </div>
+      <div class="listing-card">
+        <div class="listing-img-wrap"><div class="listing-img-placeholder"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#5b7a9d" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div><div class="listing-badge">Active</div><div class="listing-mls">MLS# A4664009</div></div>
+        <div class="listing-body"><p class="listing-type">Condominium</p><p class="listing-address">432 Sunset Lake Blvd #102</p><p class="listing-city">Venice, FL</p><p class="listing-price">$232,900</p>
+          <div class="listing-details"><span class="listing-detail"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg> 2 Beds</span><span class="listing-detail"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M4 12a2 2 0 01-2-2V6h16v4a2 2 0 01-2 2M4 12v6a2 2 0 002 2h12a2 2 0 002-2v-6"/></svg> 2 Baths</span><span class="listing-detail" style="color:var(--blue);font-weight:500;">● Active</span></div>
+          <a href="https://www.homes.com/property/432-sunset-lake-boulevard-102-venice-fl-unit-102/pfpl1zy6bn5b1/" target="_blank" class="listing-link">View on Homes.com →</a>
+        </div>
+      </div>
+      <div class="listing-card">
+        <div class="listing-img-wrap"><div class="listing-img-placeholder"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#5b7a9d" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div><div class="listing-badge">Active</div><div class="listing-mls">MLS# A4676157</div></div>
+        <div class="listing-body"><p class="listing-type">Residential</p><p class="listing-address">1512 23rd Ave W</p><p class="listing-city">Bradenton, FL</p><p class="listing-price">$79,900</p>
+          <div class="listing-details"><span class="listing-detail"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg> 1 Bed</span><span class="listing-detail"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M4 12a2 2 0 01-2-2V6h16v4a2 2 0 01-2 2M4 12v6a2 2 0 002 2h12a2 2 0 002-2v-6"/></svg> 2 Baths</span><span class="listing-detail" style="color:var(--blue);font-weight:500;">● Active</span></div>
+          <a href="https://www.homes.com/property/1512-23rd-avenue-w-bradenton-fl/g9nhewjbb442z/" target="_blank" class="listing-link">View on Homes.com →</a>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem;">
+      <a href="https://calendly.com/danielle-danielleflrealtor" target="_blank" class="btn-primary">Interested in a Property? Let's Talk →</a>
+    </div>
+  </div>
+</section>
+
+<section class="areas">
+  <div style="max-width:1120px;margin:0 auto;">
+    <p class="section-label" style="color:var(--blue-light);">Coverage Area</p>
+    <h2 class="section-title" style="color:#fff;margin-bottom:0.6rem;">Areas I <em style="color:var(--blue-light);">Service</em></h2>
+    <p style="color:rgba(255,255,255,0.45);font-size:0.92rem;margin-bottom:3.5rem;">From the Gulf beaches to the heart of Tampa Bay — I've got you covered.</p>
+    <div class="areas-grid">
+      <div class="area-card"><span class="area-icon">🌊</span><h3>Sarasota County</h3><p>Sarasota · Siesta Key · Venice · Osprey · Nokomis · North Port · Englewood</p></div>
+      <div class="area-card"><span class="area-icon">🏡</span><h3>Manatee County</h3><p>Bradenton · Anna Maria Island · Lakewood Ranch · Palmetto · Ellenton · Parrish</p></div>
+      <div class="area-card"><span class="area-icon">🌉</span><h3>Pinellas County</h3><p>St. Petersburg · Clearwater · Largo · Dunedin · Seminole · Treasure Island · St. Pete Beach</p></div>
+      <div class="area-card"><span class="area-icon">🏙️</span><h3>Hillsborough County</h3><p>Tampa · Brandon · Riverview · Valrico · Plant City · Sun City Center · Apollo Beach</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="resources" id="resources">
+  <div style="max-width:1120px;margin:0 auto;">
+    <p class="section-label">Free Resources</p>
+    <h2 class="section-title">Tools to Help You <em>Decide</em></h2>
+    <p style="color:var(--muted);margin-top:0.8rem;font-size:0.95rem;">No email required. Just genuinely useful information about the Sarasota &amp; Bradenton market.</p>
+    <div class="resources-grid">
+      <div class="resource-card" onclick="openModal('calc-modal')"><p class="resource-type">Interactive Tool</p><h3>Rent vs. Buy Calculator</h3><p>Plug in your numbers and get a real answer — built for the Sarasota &amp; Bradenton market.</p><span class="resource-link">Try it now →</span></div>
+      <div class="resource-card" onclick="openModal('quiz-modal')"><p class="resource-type">Quiz</p><h3>Find Your Neighborhood</h3><p>Answer a few questions and I'll tell you exactly where on the Suncoast you should be looking.</p><span class="resource-link">Take the quiz →</span></div>
+      <div class="resource-card" onclick="openModal('checklist-modal')"><p class="resource-type">Checklist</p><h3>First-Time Buyer Checklist</h3><p>Everything you need before, during, and after buying your first home — in the right order.</p><span class="resource-link">View checklist →</span></div>
+      <div class="resource-card" onclick="openModal('guide-modal')"><p class="resource-type">Local Guide</p><h3>New to Sarasota? Start Here.</h3><p>Everything I'd tell a friend moving to the Suncoast — my real insider recommendations.</p><span class="resource-link">Read the guide →</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="cta-inner">
+    <h2>Let's Talk <em>Suncoast</em> 🌴</h2>
+    <p>No stress, no pressure — just a real conversation about your move to Sarasota or Bradenton. I genuinely love this part.</p>
+    <a href="https://calendly.com/danielle-danielleflrealtor" target="_blank" class="btn-white">Book Your Free Call →</a>
+  </div>
+</section>
+
+<footer>
+  <p class="footer-logo">Danielle <em>Campbell</em></p>
+  <p class="footer-sub">Licensed Realtor · Sarasota &amp; Bradenton, FL</p>
+  <p style="margin-bottom:0.6rem;"><a href="/cdn-cgi/l/email-protection#93f7f2fdfaf6fffff6b5b0a5a7a8f7f2fdfaf6fffff6f5ffe1f6f2ffe7fce1b5b0a7a5a8f0fcfe" style="color:rgba(255,255,255,0.45);font-size:0.82rem;text-decoration:none;">danielle&#64;danielleflrealtor&#46;com</a></p>
+  <p class="footer-copy">© 2026 · All rights reserved</p>
+</footer>
+
+<div class="modal-overlay" id="calc-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('calc-modal')">✕</button>
+    <p class="modal-title">Rent vs. Buy</p>
+    <p class="modal-sub">Sarasota &amp; Bradenton market numbers</p>
+    <div class="form-row">
+      <div class="form-group"><label>Monthly Rent Budget</label><input type="number" id="c-rent" placeholder="2200" /></div>
+      <div class="form-group"><label>Home Purchase Budget</label><input type="number" id="c-buy" placeholder="350000" /></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>Down Payment %</label><input type="number" id="c-down" placeholder="10" /></div>
+      <div class="form-group"><label>Years You'll Stay</label><input type="number" id="c-years" placeholder="5" /></div>
+    </div>
+    <button class="btn-primary" style="width:100%;text-align:center;" onclick="runCalc()">Calculate →</button>
+    <div class="calc-result" id="calc-result"></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="quiz-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('quiz-modal')">✕</button>
+    <p class="modal-title">Find Your Neighborhood</p>
+    <p class="modal-sub">A few questions · Honest result</p>
+    <div id="quiz-body"></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="checklist-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('checklist-modal')">✕</button>
+    <p class="modal-title">First-Time Buyer Checklist</p>
+    <p class="modal-sub">Tap items to check them off</p>
+    <ul class="checklist-items">
+      <li onclick="this.classList.toggle('checked')"><div class="check-box"><span class="check-mark">✓</span></div>Get pre-approved for a mortgage</li>
+      <li onclick="this.classList.toggle('checked')"><div class="check-box"><span class="check-mark">✓</span></div>Set your total budget (purchase + closing costs)</li>
+      <li onclick="this.classList.toggle('checked')"><div class="check-box"><span class="check-mark">✓</span></div>Research Sarasota &amp; Bradenton neighborhoods</li>
+      <li onclick="this.classList.toggle('checked')"><div class="check-box"><span class="check-mark">✓</span></div>Book a free consultation with Danielle</li>
+      <li onclick="this.classList.toggle('checked')"><div class="check-box"><span class="check-mark">✓</span></div>Create your must-haves vs. nice-to-haves list</li>
+      <li onclick="this.classList.toggle('checked')"><div class="check-box"><span class="check-mark">✓</span></div>Tour properties (in person or virtually)</li>
+      <li onclick="this.classList.toggle('checked')"><div class="check-box"><span class="check-mark">✓</span></div>Submit your offer with Danielle's guidance</li>
+      <li onclick="this.classList.toggle('checked')"><div class="check-box"><span class="check-mark">✓</span></div>Schedule your home inspection</li>
+      <li onclick="this.classList.toggle('checked')"><div class="check-box"><span class="check-mark">✓</span></div>Review inspection report &amp; negotiate repairs</li>
+      <li onclick="this.classList.toggle('checked')"><div class="check-box"><span class="check-mark">✓</span></div>Secure homeowner's insurance</li>
+      <li onclick="this.classList.toggle('checked')"><div class="check-box"><span class="check-mark">✓</span></div>Final walkthrough before closing</li>
+      <li onclick="this.classList.toggle('checked')"><div class="check-box"><span class="check-mark">✓</span></div>Close &amp; get your keys! 🎉</li>
+    </ul>
+  </div>
+</div>
+
+<div class="modal-overlay" id="guide-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('guide-modal')">✕</button>
+    <p class="modal-title">New to Sarasota?</p>
+    <p class="modal-sub">Everything I tell every client before they move</p>
+    <div class="guide-prose">
+      <h4>01 · The Suncoast Lifestyle</h4>
+      <p>Life here revolves around the water, farmers markets, arts events, and beautiful weather. Sarasota is a cultural hub with a small-town feel — don't be surprised when you never want to leave.</p>
+      <h4>02 · Cost of Living</h4>
+      <p>Budget around $1,800–$2,800/mo for a 1–2 BR rental. Homeownership starts around $280K in Bradenton and climbs quickly toward the water. Florida has no state income tax.</p>
+      <h4>03 · Neighborhoods 101</h4>
+      <p>Downtown Sarasota is walkable and vibrant. Lakewood Ranch offers master-planned community living. The keys (Siesta, Lido, Longboat) are beach living at its finest. Bradenton is more affordable and growing fast.</p>
+      <h4>04 · Getting Around</h4>
+      <p>You'll need a car — public transit is limited. Most locals live within 20 minutes of the beach. Traffic builds in season (Jan–April).</p>
+      <h4>05 · Working With a Realtor is FREE for Buyers</h4>
+      <p>In Florida, the seller pays the buyer's agent commission — so working with me costs you absolutely nothing as a buyer.</p>
+    </div>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false">
+var carouselIndex = 0;
+var totalSlides = 6;
+function slideCarousel(dir) {
+  carouselIndex = (carouselIndex + dir + totalSlides) % totalSlides;
+  updateCarousel();
+}
+function goToSlide(n) {
+  carouselIndex = n;
+  updateCarousel();
+}
+function updateCarousel() {
+  document.getElementById('carousel-track').style.transform = 'translateX(-' + (carouselIndex * 100) + '%)';
+  var dots = document.querySelectorAll('.dot');
+  dots.forEach(function(d, i) {
+    d.style.background = i === carouselIndex ? 'var(--blue)' : 'var(--sand-dark)';
+    d.style.width = i === carouselIndex ? '24px' : '8px';
+    d.style.borderRadius = '4px';
+  });
+}
+function openModal(id) {
+  document.getElementById(id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+  if (id === 'quiz-modal') initQuiz();
+}
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.querySelectorAll('.modal-overlay').forEach(function(el) {
+  el.addEventListener('click', function(e) { if (e.target === el) closeModal(el.id); });
+});
+function runCalc() {
+  var rent = parseFloat(document.getElementById('c-rent').value) || 2200;
+  var buy = parseFloat(document.getElementById('c-buy').value) || 350000;
+  var down = parseFloat(document.getElementById('c-down').value) || 10;
+  var years = parseFloat(document.getElementById('c-years').value) || 5;
+  var downAmt = buy * (down / 100);
+  var loan = buy - downAmt;
+  var rate = 0.069 / 12;
+  var n = 30 * 12;
+  var monthly = loan * (rate * Math.pow(1+rate,n)) / (Math.pow(1+rate,n) - 1);
+  var totalMonthly = monthly + (buy * 0.011 / 12) + (buy * 0.001 / 12);
+  var totalRentCost = rent * years * 12;
+  var totalBuyCost = totalMonthly * years * 12 + downAmt;
+  var futureValue = buy * Math.pow(1.04, years);
+  var equity = Math.round(futureValue - loan * 0.85);
+  var diff = totalBuyCost - totalRentCost;
+  var result = document.getElementById('calc-result');
+  result.innerHTML = '<p>Over <strong>' + years + ' year' + (years>1?'s':'') + '</strong>:<br><br>' +
+    '🏠 <strong>Renting</strong> costs ~<strong>$' + Math.round(totalRentCost).toLocaleString() + '</strong> with $0 equity built.<br>' +
+    '🔑 <strong>Buying</strong> costs ~<strong>$' + Math.round(totalBuyCost).toLocaleString() + '</strong> all-in, but builds ~<strong>$' + equity.toLocaleString() + '</strong> in equity.<br><br>' +
+    (diff > 0 ? 'Renting is <strong>$' + Math.round(diff).toLocaleString() + ' less upfront</strong>, but buying builds real lasting wealth on the Suncoast.' : 'Buying comes out <strong>$' + Math.round(Math.abs(diff)).toLocaleString() + ' ahead</strong> — and you own an appreciating asset.') + '</p>';
+  result.classList.add('visible');
+}
+var quizQs = [
+  { q: "What's your vibe?", opts: ["Beach & water 24/7", "Walkable & urban", "Quiet & suburban", "Up-and-coming & affordable"] },
+  { q: "Ideal commute?", opts: ["I work remotely", "Under 20 minutes", "20-35 min is fine", "Anywhere - I love to drive"] },
+  { q: "Your budget range?", opts: ["Under $250K", "$250K-$500K", "$500K-$1M", "$1M+"] },
+  { q: "Most important to you?", opts: ["Walkability & nightlife", "Great schools & families", "Nature & outdoors", "Investment potential"] }
+];
+var quizRes = [
+  { area: "Siesta Key or Lido Key", desc: "You're a water person through and through. The keys offer beach living at its finest — wake up, walk to the water, repeat forever." },
+  { area: "Downtown Sarasota", desc: "You want the full urban experience: walkable streets, arts venues, great restaurants, and a vibrant community right outside your door." },
+  { area: "Lakewood Ranch", desc: "Master-planned, family-friendly, and beautifully maintained. Top-rated schools and a strong sense of community — one of Florida's best places to live." },
+  { area: "Bradenton or Palmetto", desc: "Smart choice. Bradenton offers incredible value and is growing fast. You'll get more home for your money while staying minutes from the water." }
+];
+var qAnswers = [], qStep = 0;
+function initQuiz() { qAnswers = []; qStep = 0; renderQ(); }
+function renderQ() {
+  var b = document.getElementById('quiz-body');
+  if (qStep >= quizQs.length) {
+    var score = qAnswers.reduce(function(a,c){return a+c;}, 0);
+    var idx = Math.min(Math.round(score / quizQs.length), quizRes.length-1);
+    var r = quizRes[idx];
+    b.innerHTML = '<div class="quiz-result"><h4>You belong in: ' + r.area + '</h4><p>' + r.desc + '</p></div><button class="btn-primary" style="margin-top:1.5rem;width:100%;text-align:center;" onclick="initQuiz()">Retake Quiz</button>';
+    return;
+  }
+  var q = quizQs[qStep];
+  var opts = q.opts.map(function(o,i){ return '<button class="quiz-option" onclick="pickQ(' + i + ')">' + o + '</button>'; }).join('');
+  b.innerHTML = '<p class="quiz-progress">Question ' + (qStep+1) + ' of ' + quizQs.length + '</p><p class="quiz-question">' + q.q + '</p><div class="quiz-options">' + opts + '</div>';
+}
+function pickQ(i) { qAnswers.push(i); qStep++; renderQ(); }
+</script>
+</body>
+</html>
