@@ -177,6 +177,7 @@ footer { background: var(--charcoal); padding: 3rem 2.5rem; text-align: center; 
   .nav-links { display: none; }
   .about-perks { grid-template-columns: 1fr; }
   .about, .why, .help, .listings, .areas, .resources, .cta-banner { padding: 4rem 1.5rem; }
+  .about > div { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
 }
 @media (max-width: 600px) {
   .hero-name { font-size: 3.2rem; }
@@ -214,6 +215,7 @@ footer { background: var(--charcoal); padding: 3rem 2.5rem; text-align: center; 
     <div>
       <p class="hero-eyebrow">Sarasota &amp; Bradenton Realtor</p>
       <h1 class="hero-name">Danielle<em>Campbell</em></h1>
+      <img src="logo.png" alt="Allegiant logo" style="height:38px;width:auto;margin-bottom:1.6rem;opacity:0.92;filter:brightness(0) invert(1);" />
       <p class="hero-sub">Licensed Realtor · Sarasota Native · Your Local Expert</p>
       <p class="hero-bio">Sarasota born and raised, I've proudly served my hometown since 2022 — helping families buy, sell, and find their perfect place on the Suncoast. Real estate isn't just my career, it's something I'm truly passionate about. 🌴</p>
       <div class="hero-btns">
@@ -238,7 +240,11 @@ footer { background: var(--charcoal); padding: 3rem 2.5rem; text-align: center; 
 </section>
 
 <section class="about" id="about">
-  <div style="max-width:780px;margin:0 auto;">
+  <div style="max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;align-items:center;">
+    <div style="border-radius:4px;overflow:hidden;box-shadow:16px 16px 55px rgba(43,43,43,0.13);">
+      <img src="mom-and-me.jpg" alt="Danielle Campbell and her mom" style="width:100%;height:100%;object-fit:cover;display:block;" />
+    </div>
+    <div style="max-width:780px;">
     <p class="section-label">About Me</p>
     <h2 class="section-title" style="margin-bottom:1.5rem;">A Local You Can <em>Trust</em></h2>
     <p class="about-bio">Sarasota born and raised, I've proudly served my hometown as a licensed Realtor since 2022. In that time, I've helped many families navigate one of life's biggest milestones with confidence and clarity. I work alongside my mom, a broker/owner with over 25 years of experience. Real estate isn't just my career — it's something I'm truly passionate about. You can expect clear communication, timely responses, local insight as a Sarasota native, step-by-step guidance, and service that always goes above and beyond.</p>
@@ -251,6 +257,7 @@ footer { background: var(--charcoal); padding: 3rem 2.5rem; text-align: center; 
       <div class="perk"><div class="perk-dot"></div><p>Service that goes above &amp; beyond</p></div>
     </div>
     <a href="https://calendly.com/danielle-danielleflrealtor" target="_blank" class="btn-primary">Let's Chat →</a>
+    </div>
   </div>
 </section>
 
